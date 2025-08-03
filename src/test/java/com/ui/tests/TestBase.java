@@ -19,37 +19,35 @@ public class TestBase {
 	protected HomePage homePage;
 	Logger logger = LoggerUtility.getLogger(this.getClass());
 	private boolean isLambdaTest;
-	
-	@Parameters({"browser","isLambdaTest", "isHeadless"})
+
+	@Parameters({ "browser", "isLambdaTest", "isHeadless" })
 	@BeforeMethod(description = "Load the Homepage if the website")
-	public void setUp(
-			@Optional("chrome") String browser,
-			@Optional("false") boolean isLambdaTest,
+	public void setUp(@Optional("chrome") String browser, @Optional("false") boolean isLambdaTest,
 			@Optional("true") boolean isHeadless, ITestResult result) {
-		
+
 		this.isLambdaTest = isLambdaTest;
 		WebDriver lambdaDriver;
-		
-		if(isLambdaTest) {
+
+		if (isLambdaTest) {
 			lambdaDriver = LambdaTestUtility.initializeLambdaTestSession(browser, result.getMethod().getMethodName());
 			homePage = new HomePage(lambdaDriver);
 		} else {
 //			Running Test on Local machine 
-		logger.info("Load the Homepage of the website");
-		homePage = new HomePage(Browser.valueOf(browser.toUpperCase()), isHeadless);
+			logger.info("Load the Homepage of the website");
+			homePage = new HomePage(Browser.valueOf(browser.toUpperCase()), isHeadless);
 		}
 	}
-	
+
 	public BrowserUtility getInstance() {
 		return homePage;
 	}
-	
+
 	@AfterMethod(description = "Tear Down the browser")
 	public void tearDown() {
-		if(isLambdaTest) {
+		if (isLambdaTest) {
 			LambdaTestUtility.quitSession(); // Quit or Close BrowserTest on LT
 		} else {
-		homePage.quit(); // local
+			homePage.quit(); // local
 		}
 	}
 }

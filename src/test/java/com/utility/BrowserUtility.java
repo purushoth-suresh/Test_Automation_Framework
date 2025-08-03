@@ -22,7 +22,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import com.constants.Browser;
 
 public abstract class BrowserUtility {
-	
+
 	private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	Logger logger = LoggerUtility.getLogger(this.getClass());
 
@@ -30,34 +30,33 @@ public abstract class BrowserUtility {
 		return driver.get();
 	}
 
-
 	public BrowserUtility(WebDriver driver) {
 		super();
-		this.driver.set(driver); //Intialize the instance variable driver!!
+		this.driver.set(driver); // Intialize the instance variable driver!!
 	}
-	
+
 	public BrowserUtility(String browserName) {
-		logger.info("Launching " + browserName  + " browser");
-		if(browserName.equalsIgnoreCase("chrome")) {
+		logger.info("Launching " + browserName + " browser");
+		if (browserName.equalsIgnoreCase("chrome")) {
 			driver.set(new ChromeDriver());
-		} else if(browserName.equalsIgnoreCase("edge")) {
+		} else if (browserName.equalsIgnoreCase("edge")) {
 			driver.set(new EdgeDriver());
 		} else {
 			logger.error("Invalid Browser Name!!!...Please Select Chrome or Edge...");
 		}
 	}
-	
+
 	public BrowserUtility(Browser browserName) {
-		logger.info("Launching " + browserName  + " browser");
-		if(browserName == Browser.CHROME) {
+		logger.info("Launching " + browserName + " browser");
+		if (browserName == Browser.CHROME) {
 			driver.set(new ChromeDriver());
-		} else if(browserName == Browser.EDGE) {
+		} else if (browserName == Browser.EDGE) {
 			driver.set(new EdgeDriver());
-		} else if(browserName == Browser.FIREFOX) {
+		} else if (browserName == Browser.FIREFOX) {
 			driver.set(new FirefoxDriver());
-		} 
+		}
 	}
-	
+
 	public BrowserUtility(Browser browserName, boolean isHeadless) {
 		logger.info("Launching Browser for " + browserName);
 
@@ -110,38 +109,38 @@ public abstract class BrowserUtility {
 		}
 
 	}
-	
+
 	public void goToWebsite(String url) {
 		logger.info("Visiting the website" + url);
 		driver.get().get(url);
 	}
-	
+
 	public void maximizeWindow() {
 		logger.info("Maximize browser window");
 		driver.get().manage().window().maximize();
 	}
-	
+
 	public void clickOn(By locator) {
 		logger.info("Finding element with the locator" + locator);
 		logger.info("Element Found now performing Click");
 		driver.get().findElement(locator).click();
 	}
-	
+
 	public void enterText(By locator, String textToEnter) {
 		logger.info("Finding element with the locator" + locator);
-		logger.info("Element Found now entering Text" + textToEnter );
+		logger.info("Element Found now entering Text" + textToEnter);
 		driver.get().findElement(locator).sendKeys(textToEnter);
 	}
-	
+
 	public String getVisibleText(By locator) {
 		logger.info("Finding element with the locator" + locator);
 		WebElement element = driver.get().findElement(locator);
 		logger.info("Element Found now returning visible Text" + element.getText());
 		return element.getText();
 	}
-	
+
 	public String takeScreenShot(String name) {
-		TakesScreenshot screenshot = (TakesScreenshot)driver.get();
+		TakesScreenshot screenshot = (TakesScreenshot) driver.get();
 		File screenshotData = screenshot.getScreenshotAs(OutputType.FILE);
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("HH-mm-ss");
@@ -149,13 +148,13 @@ public abstract class BrowserUtility {
 		String path = "./screenshots/" + name + "-" + timeStamp + ".png";
 		File screenshotFile = new File(path);
 		try {
-		FileUtils.copyFile(screenshotData, screenshotFile);
-		} catch(IOException e) {
+			FileUtils.copyFile(screenshotData, screenshotFile);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return path;
 	}
-	
+
 	public void quit() {
 		driver.get().quit();
 	}

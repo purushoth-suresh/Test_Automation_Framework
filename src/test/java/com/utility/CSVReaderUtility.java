@@ -11,35 +11,35 @@ import com.opencsv.exceptions.CsvValidationException;
 import com.ui.pojo.User;
 
 public class CSVReaderUtility {
-	
+
 	public static Iterator<User> readCSVFile(String fileName) {
-		File csvFile = new File(System.getProperty("user.dir") +"//testData//" + fileName);
+		File csvFile = new File(System.getProperty("user.dir") + "//testData//" + fileName);
 		FileReader fileReader = null;
 		CSVReader csvReader = null;
-		String[] line; 
+		String[] line;
 		List<User> userList = null;
 		User userData;
-		
+
 		try {
 			fileReader = new FileReader(csvFile);
 			csvReader = new CSVReader(fileReader);
 			csvReader.readNext();
-			
+
 			userList = new ArrayList<User>();
-			
-			while((line = csvReader.readNext())!=null) {
-				userData = new User(line[0],line[1]);
+
+			while ((line = csvReader.readNext()) != null) {
+				userData = new User(line[0], line[1]);
 				userList.add(userData);
 			}
-			
+
 		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace(); 
-			
-		} catch (CsvValidationException | IOException e) {
-			
+
 			e.printStackTrace();
-			
+
+		} catch (CsvValidationException | IOException e) {
+
+			e.printStackTrace();
+
 		}
 		return userList.iterator();
 
