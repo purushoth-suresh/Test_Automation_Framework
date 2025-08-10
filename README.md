@@ -1,48 +1,53 @@
-# Automation Testing Framework – Java | Selenium | TestNG
+# Test Automation Framework
 
-This repository contains a **Test Automation Framework** designed for **web application testing** using **Java**, **Selenium WebDriver**, and **TestNG**, built on **TDD principles** and following the **Page Object Model (POM)** design pattern for maintainability and scalability.
+This is a Java-based test automation framework.
 
----
+The framework leverages various libraries and tools to facilitate data-driven testing, logging, reporting, and integration with cloud-based testing platform like lambdatest.
 
-## 🚀 Key Features
-- **Test-Driven Development (TDD):** Ensures tests are designed before implementation for high-quality, reliable automation.
-- **Page Object Model (POM):** Provides clean separation of test logic and UI elements, improving reusability and reducing maintenance effort.
-- **Parallel Execution:** Integrated with TestNG to run multiple tests simultaneously, reducing overall execution time.
-- **Headless Execution:** Supports headless mode for faster test execution in CI/CD pipelines.
-- **Cross-Browser & Cloud Testing:** Seamless execution on **LambdaTest Cloud** for different browsers, versions, and operating systems.
-- **Data-Driven Testing:** Handles test data from **JSON**, **CSV**, and **Excel** for comprehensive test coverage.
-- **Tag-Based Execution:** Enables selective execution of tests based on defined groups or tags.
-- **Advanced Reporting & Logging:** Integrated with **Log4j** for logging and **ExtentReports** for detailed HTML reports with screenshots.
-- **Maven Integration:** For dependency management and build automation.
 
----
 
-## 📂 Project Structure
-src
-├── com.ui # Page classes representing application screens
-├── com.test # Test classes for scenarios and validations
-├── com.utility # Common reusable utilities and helpers
-├── com.listeners # Custom TestNG listeners for logging and reporting
-└── com.pojo # POJO classes for structured data representation
----
+## About Me
+Hi, My Name is Purushoth Suresh and I have 4 years of experience in Automation Testing using technologies like Selenium Webdriver, Appium. 
 
-## 🛠️ Technology Stack
-- **Language:** Java  
-- **Automation Tool:** Selenium WebDriver  
-- **Testing Framework:** TestNG  
-- **Build Tool:** Maven  
-- **Cloud Execution:** LambdaTest  
-- **Data Sources:** JSON, CSV, Excel  
-- **Logging & Reporting:** Log4j, ExtentReports  
+My major expertise is in Java Programming Language.
 
----
 
-## ✅ About the Framework
-This framework is designed for **scalable, maintainable, and high-performance test automation**, suitable for both **local and cloud-based executions**. It implements **OOP principles**, enabling better modularity and reusability, and supports **continuous integration pipelines** by offering **headless execution** and **parallel testing**.
+## Author
 
----
+- [@purushoth-suresh](https://github.com/purushoth-suresh)
 
-### 📌 How to Run
+## Prerequisites
+
+Before running this framework, ensure the following software is installed on your system:
+
+- **Java 11** - Make sure Java is installed and the JAVA_HOME environment variable is set.
+- **Maven** - Ensure Maven is installed and added to the system path.
+- Downlod Link: https://maven.apache.org/download.cgi
+
+
+
+## Features
+- **Data-Driven Testing**: Using OpenCSV, Apache POI, and Gson for reading test data from CSV and Excel files and JSON.
+- **Cross-Browser Testing**: Supports running tests on different browsers.
+- **Headless Mode**: Faster execution by running tests in headless mode.
+- **Cloud Testing**: Integrated with LambdaTest to run tests on the cloud.
+- **Logging**: Uses Log4j for detailed logs.
+- **Reporting**: Generates detailed reports using Extent Reports.
+
+
+
+## Technologies Used
+- Java 11
+- TestNG
+- OpenCSV
+- Gson
+- Apache POI
+- Faker
+- LambdaTest
+- Log4j
+- Extent Reports
+
+### How to Run
 ```bash
 # Clean and build the project
 mvn clean install
