@@ -47,13 +47,42 @@ Before running this framework, ensure the following software is installed on you
 - Log4j
 - Extent Reports
 
-### How to Run
+## Setup Instructions
+
+**Clone the Repository:**
+
 ```bash
-# Clean and build the project
-mvn clean install
+  git clone https://github.com/jatin99/Test-Automation-Framework.git
 
-# Execute tests with TestNG
-mvn test
+  cd Test-Automation-Framework
+```
+    
 
-# Execute specific suite
-mvn test -DsuiteXmlFile=testng.xml
+**Running Tests on LambdaTest:**
+
+```bash
+     mvn test  -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false -X
+
+```
+
+
+**Running Tests on Chrome browser on Local Machine in Headless Mode:**
+
+```bash
+     mvn test  -Dbrowser=chrome -DisLambdaTest=false -DisHeadless=true -X
+
+```
+
+## Reports & Logs
+-Reports: After execution, a detailed HTML report will be generated at ./report.html. 
+
+The report contains information on test cases executed, passed, failed, and skipped, along with screenshots for failed tests.
+
+## Logs: 
+Logs are created during the test execution and stored in the ./logs/ directory. 
+
+## Integrated the project Github Actions 
+This automation framework is integrated with github actions.
+The tests will be executed at 11:30PM IST every single day. 
+
+The reports will be archieved in gh-pages branch
